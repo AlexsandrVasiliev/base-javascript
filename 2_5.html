@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Homework</title>
+</head>
+<body>
+<!--
+Обязательное задание.
+
+Необходимо скопировать и вставить в данный скрипт все функции из 4 задания.
+Необходимо реализовать функцию:
+mathOperation(arg1, arg2, operation);
+Параметры:
+arg1 - первое число.
+arg2 - второе число.
+operation - строка, которая содержит один символ из: "+", "-", "*", "/".
+Функция mathOperation должна вернуть результат операции, который был передан в
+параметр operation для двух первых аргументов (arg1 и arg2).
+Функция mathOperation должна использовать для вычисления функции из 4 задания.
+
+Примеры вызова функции:
+console.log(mathOperation(5, 3, "+")); // 8
+console.log(mathOperation(5, 3, ":)")); // NaN
+
+Функции mathOperation всегда передаются корректные числа, проверки на NaN,
+Infinity делать не нужно, однако, в случае если был передан некорректный
+аргумент в параметр operation, необходимо вернуть NaN.
+
+Необходимо для всех функций прописать комментарии jsdoc https://jsdoc.app/.
+-->
+<script>
+  "use strict";
+
+/**
+   * Функция суммы чисел. Принимает в качестве параметров два числа.
+   * Пример: Sum(<число один>,<число два>)
+  */
+  function Sum(numberOne, numberTwo) {
+    return numberOne + numberTwo;
+  }
+  /**
+   * Функция разности чисел. Принимает в качестве параметров два числа.
+   * Вычитает из большего числа меньшее.
+   * Пример: Dif(<число один>,<число два>)
+  */
+  function Dif(numberOne, numberTwo) {
+    if (numberOne > numberTwo) {
+      return numberOne - numberTwo;
+    } 
+    if (numberOne < numberTwo) {
+      return numberTwo - numberOne;
+    }
+    return 0;
+  }
+  /**
+   * Функция произведения чисел. Принимает в качестве параметров два числа.
+   * Пример: Prod(<число один>,<число два>)
+  */
+  function Prod(numberOne, numberTwo) {
+    return numberOne * numberTwo;
+  }
+  /**
+   * Функция деления чисел. Принимает в качестве параметров два числа.
+   * Не может делить на ноли или ноль на число.
+   * Пример: Div(<число один>,<число два>)
+  */
+  function Div(numberOne, numberTwo) {
+    if (numberOne === 0 || numberTwo === 0) {
+      return 'случай деление на ноль или нуля на число';
+    }
+    return numberOne / numberTwo;
+  }
+
+  function mathOperation(numberOne, numberTwo, operation){
+    switch (operation) {
+      case '+': Sum(numberOne,numberTwo);break;
+      case '-': Dif(numberOne,numberTwo);break;
+      case '*': Prod(numberOne,numberTwo);break;
+      case '/': Div(numberOne,numberTwo);break;
+      default : return 'Bad Request';break;
+    }
+  }
+
+  const a = +prompt('Введите первое число: ');
+  const b = +prompt('Введите второе число: ');
+  const operation = prompt('Введите знак математической операции (+,-,*,/): ');
+
+  consol.log(mathOperation(a,b,operation));
+</script>
+</body>
+</html>
